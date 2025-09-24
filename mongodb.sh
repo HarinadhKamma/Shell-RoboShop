@@ -16,11 +16,10 @@ log_file="$logs_folder/$script_name.log"
 mkdir -p $logs_folder
 echo "script started executing"
 
-if [ $id -u -eq o];then
- echo "User have access to install "
-else
-   echo "user don't have root access"
-   exit 1
+#userid=$(id -u)
+if [ $(id -u) -ne 0 ]; then
+    echo "user don't have root access to install"
+    exit 1
 fi
 
  # functions receive inputs through args just like shell script args
